@@ -1,6 +1,6 @@
 from pynfc import Nfc, Desfire, Timeout
 
-N = Nfc("pn532_uart:/dev/ttyAMA0:115200")
+N = Nfc("pn532_uart:/dev/ttyS0:115200")
 DESFIRE_DEFAULT_KEY = b'\x00'*8
 MIFARE_BLANK_TOKEN =b'xFF'*1024*4
 
