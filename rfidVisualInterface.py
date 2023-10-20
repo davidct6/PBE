@@ -53,9 +53,10 @@ class visualInterface(Gtk.Window):
         self.label.set_label('<span foreground="white" size="x-large">Please, login with your university card</span>')
         self.evbox.override_background_color(0, Gdk.RGBA(0, 0, 8, 1))
         
-        #Com el thread inicial ha finalitzat el seu "target" desapareix i hem d'iniciar un altre.
-        thread = threading.Thread(target = self.scan_uid)
-        thread.start()
+        #Com el thread inicial ha finalitzat el seu "target" desapareix i hem d'iniciar un altre. Per evitar tenir més dun proces afegim condicio.
+        if not thread.is_alive():
+            thread = threading.Thread(target = self.scan_uid)
+            thread.start()
 
     # Escanejem targeta
     def scan_uid(self):
